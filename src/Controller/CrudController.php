@@ -102,8 +102,7 @@ class CrudController extends AbstractController
      /**
      * @Route("/crud/{id}", name="crud_show_post")
      */
-    public function show($id): Response
-    {
+    public function show($id): Response{
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
         return $this->render('crud/index.html.twig',

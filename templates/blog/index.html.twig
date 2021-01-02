@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Home page{% endblock %}
 
 {% block body %}
 
@@ -14,7 +14,13 @@
                 <p class="card-text">{{ article.content }}</p>
             </div>
             <div class="card-body">
-                <a href="/crud/{{ article.id }}" class="btn btn-outline-primary">show article</a>
+                {% if app.user %}
+                    <a href="/crud/{{ article.id }}" class="btn btn-primary">show article</a>
+                {% else %}
+                    <a href="/login" class="btn btn-primary">show article</a>
+                {% endif %}
+                
+                
             </div>
             {% if article.updated == article.created %}
                 <div class="card-footer text-muted">

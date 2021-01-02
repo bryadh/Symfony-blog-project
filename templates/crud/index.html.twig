@@ -11,8 +11,14 @@
             <p class="card-text">{{ article.content }}</p>
         </div>
         <div class="card-body mt-2">
-            <a href="/crud/edit/{{ article.id }}" class="btn btn-primary">edit</a>
-            <a href="" id="delete-article" class="btn btn-danger " data-id="{{ article.id }}">delete</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="/crud/edit/{{ article.id }}" class="btn btn-primary">edit</a>
+                <a href="#" id="delete-article" class="btn btn-danger " data-id="{{ article.id }}">delete</a>
+            {% else %}
+                <a href="" class="btn btn-primary disabled">edit</a>
+                <a href="" id="delete-article" class="btn btn-danger disabled" data-id="{{ article.id }}">delete</a>
+            {% endif %}
+            
         </div>
         {% if article.updated|date('Y-m-d') > article.created|date('Y-m-d') %}
                 <div class="card-footer text-muted">
