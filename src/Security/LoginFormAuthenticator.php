@@ -102,6 +102,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('/');
+        return $this->urlGenerator->generate('blog');
     }
 }

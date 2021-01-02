@@ -90,7 +90,10 @@
             "@auto-scripts"
         ],
         "compile" : [
-            "php bin/console doctrine:fixtures:load"
+            "php bin/console doctrine:schema:update --force",
+            "php bin/console doctrine:fixtures:load",
+            "php bin/console app:create-user --admin admin@heroku.com azerty",
+            "php bin/console app:create-user user@heroku.com azerty"
         ]
     },
     "conflict": {
